@@ -1,0 +1,361 @@
+Date: 25-03-2021
+Session 1
+
+
+Add a new administrator and enter through that user.
+
+Keyboard shortcuts -
+ctrl+alt+t  terminal
+windows+e  home folder
+windows +f  firefox browser
+
+
+
+Long term support (LTS)
+1. lsb_release -a 
+Output :  No LSB modules are available.
+Distributor ID:    Ubuntu
+Description:    Ubuntu 20.04.2 LTS
+Release:    20.04
+Codename:    focal
+ 
+.bashrc
+Commands entered will be first searched in bashrc file.
+
+
+2. sudo apt install vim git gcc g++ nodejs npm terminator python3-dev python3-pip python3-setuptools neofetch vlc
+To install required packages.
+
+3. 
+To get path of working directory
+pwd
+/home/divyah/Desktop/Exp
+
+To get into home directory
+cd ~
+
+echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+ sudo vim ~/.bashrc
+[sudo] password for divyah:
+
+At the end of the file add the following
+export MYPATH=/home/divyah/Desktop/Exp
+export PATH=$PATH:$MYPATH
+Esc :wq to save
+
+source ~/.bashrc
+
+echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/divyah/Desktop/Exp
+
+neofetch
+Lists all parameters
+
+uname -a
+Linux admin1-HP-280-G4-MT-Business-PC 5.8.0-45-generic #51~20.04.1-Ubuntu SMP Tue Feb 23 13:46:31 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+
+Create a file
+gedit first.c
+
+See contents
+file first.c
+first.c: empty
+
+To see the permissions
+ls -l first.c
+-rw-rw-r-- 1 divyah divyah 0 Mar 25 09:56 first.c
+
+To change/add permissions
+sudo chmod u+x first.c
+ls -l first.c
+-rwxrw-r-- 1 divyah divyah 0 Mar 25 09:56 first.c
+
+
+
+To list all the hardwares
+sudo lspci
+00:00.0 Host bridge: Intel Corporation 8th Gen Core 4-core Desktop Processor Host Bridge/DRAM Registers [Coffee Lake S] (rev 08)
+00:02.0 VGA compatible controller: Intel Corporation 8th Gen Core Processor Gaussian Mixture Model
+00:12.0 Signal processing controller: Intel Corporation Cannon Lake PCH Thermal Controller (rev 10)
+00:14.0 USB controller: Intel Corporation Cannon Lake PCH USB 3.1 xHCI Host Controller (rev 10)
+00:14.2 RAM memory: Intel Corporation Cannon Lake PCH Shared SRAM (rev 10)
+00:15.0 Serial bus controller [0c80]: Intel Corporation Cannon Lake PCH Serial IO I2C Controller #0 (rev 10)
+00:15.1 Serial bus controller [0c80]: Intel Corporation Cannon Lake PCH Serial IO I2C Controller #1 (rev 10)
+00:16.0 Communication controller: Intel Corporation Cannon Lake PCH HECI Controller (rev 10)
+00:17.0 SATA controller: Intel Corporation Cannon Lake PCH SATA AHCI Controller (rev 10)
+00:1c.0 PCI bridge: Intel Corporation Cannon Lake PCH PCI Express Root Port #6 (rev f0)
+00:1c.6 PCI bridge: Intel Corporation Cannon Lake PCH PCI Express Root Port #7 (rev f0)
+00:1e.0 Communication controller: Intel Corporation Cannon Lake PCH Serial IO UART Host Controller (rev 10)
+00:1f.0 ISA bridge: Intel Corporation H370 Chipset LPC/eSPI Controller (rev 10)
+00:1f.3 Audio device: Intel Corporation Cannon Lake PCH cAVS (rev 10)
+00:1f.4 SMBus: Intel Corporation Cannon Lake PCH SMBus Controller (rev 10)
+00:1f.5 Serial bus controller [0c80]: Intel Corporation Cannon Lake PCH SPI Controller (rev 10)
+01:00.0 PCI bridge: Integrated Technology Express, Inc. IT8893E PCIe to PCI Bridge (rev 52)
+03:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller (rev 15)
+
+To know storage related information
+sudo fdisk -l
+Disk /dev/loop0: 54.97 MiB, 57614336 bytes, 112528 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop1: 55.48 MiB, 58159104 bytes, 113592 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop2: 62.9 MiB, 65105920 bytes, 127160 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop3: 218.102 MiB, 229629952 bytes, 448496 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop4: 64.79 MiB, 67915776 bytes, 132648 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop5: 49.8 MiB, 52203520 bytes, 101960 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop6: 240.82 MiB, 252493824 bytes, 493152 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop7: 27.9 MiB, 28405760 bytes, 55480 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/sda: 931.53 GiB, 1000204886016 bytes, 1953525168 sectors
+Disk model: WDC WD10EZEX-60W
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disklabel type: gpt
+Disk identifier: C049F5B5-F868-46BB-B0B8-28D9FF7EEBE9
+
+Device   	Start    	End	Sectors  Size Type
+/dev/sda1 	2048	1050623	1048576  512M EFI System
+/dev/sda2  1050624 1953523711 1952473088  931G Linux filesystem
+
+
+Disk /dev/loop8: 51.4 MiB, 53522432 bytes, 104536 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop9: 32.28 MiB, 33841152 bytes, 66096 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Task Manager
+sudo top
+
+top - 10:06:42 up  1:17,  1 user,  load average: 0.45, 0.42, 0.44
+Tasks: 231 total,   1 running, 230 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  1.2 us,  0.3 sy,  0.0 ni, 98.3 id,  0.2 wa,  0.0 hi,  0.1 si,  0.0 st
+MiB Mem :   7797.4 total,   2433.2 free,   2153.9 used,   3210.3 buff/cache
+MiB Swap:   2048.0 total,   2048.0 free,  	0.0 used.   4661.0 avail Mem
+
+	PID USER  	PR  NI	VIRT	RES	SHR S  %CPU  %MEM 	TIME+ COMMAND                                                                   	 
+  11288 divyah	20   0 3074320 414752 150616 S   4.3   5.2   1:07.50 Web Content                                                               	 
+  18758 divyah	20   0  819884  53400  39760 S   2.0   0.7   0:12.38 gnome-terminal-                                                           	 
+   9446 divyah	20   0  861804  77860  46000 S   1.7   1.0   3:03.16 Xorg                                                                      	 
+   9629 divyah	20   0 4642928 352792 105096 S   1.0   4.4   3:08.65 gnome-shell                                                               	 
+  10347 divyah	20   0 4160568 519960 216264 S   0.7   6.5   8:49.74 firefox                                                                   	 
+  10742 divyah	20   0 2898488 357352 135396 S   0.7   4.5   3:50.36 Web Content                                                               	 
+  18706 divyah	20   0 2470288 147480  99224 S   0.7   1.8   0:14.55 Web Content                                                               	 
+ 	11 root  	20   0   	0  	0  	0 I   0.3   0.0   0:09.94 rcu_sched                                                                 	 
+  	1 root  	20   0  167532  11452   8348 S   0.0   0.1   0:02.10 systemd                                                                   	 
+  	2 root  	20   0   	0  	0  	0 S   0.0   0.0   0:00.00 kthreadd                                                                  	 
+  	3 root   	0 -20   	0  	0  	0 I   0.0   0.0   0:00.00 rcu_gp                                                                    	 
+  	4 root   	0 -20   	0  	0  	0 I   0.0   0.0   0:00.00 rcu_par_gp                                                                	 
+  	6 root   	0 -20   	0  	0  	0 I   0.0   0.0   0:00.00 kworker/0:0H-kblockd                                                      	 
+  	9 root   	0 -20   	0  	0  	0 I   0.0   0.0   0:00.00 mm_percpu_wq                                                              	 
+ 	10 root  	20   0   	0  	0  	0 S   0.0   0.0   0:00.10 ksoftirqd/0                                                               	 
+ 	12 root  	rt   0   	0  	0  	0 S   0.0   0.0   0:00.01 migration/0                                                               	 
+ 	13 root 	-51   0   	0  	0  	0 S   0.0   0.0   0:00.00 idle_inject/0                                                             	 
+ 	14 root  	20   0   	0  	0  	0 S   0.0   0.0   0:00.00 cpuhp/0                                                                   	 
+ 	15 root  	20   0   	0  	0  	0 S   0.0   0.0   0:00.00 cpuhp/1                                                                   	 
+ 	16 root 	-51   0   	0  	0  	0 S   0.0   0.0   0:00.00 idle_inject/1                                                             	 
+ 	17 root  	rt   0   	0  	0  	0 S   0.0   0.0   0:00.11 migration/1                                                               	 
+ 	18 root  	20   0   	0  	0  	0 S   0.0   0.0   0:00.11 ksoftirqd/1                                                               	 
+ 	20 root   	0 -20   	0  	0  	0 I   0.0   0.0   0:00.00 kworker/1:0H-kblockd                                                      	 
+ 	21 root  	20   0   	0  	0  	0 S   0.0   0.0   0:00.00 cpuhp/2                                                                   	 
+ 	22 root 	-51   0   	0  	0  	0 S   0.0   0.0   0:00.00 idle_inject/2                                                             	 
+ 	23 root  	rt   0   	0  	0  	0 S   0.0   0.0   0:00.11 migration/2                                                               	 
+ 	24 root  	20   0   	0  	0  	0 S   0.0   0.0   0:00.06 ksoftirqd/2                                                               	 
+ 	25 root  	20   0   	0  	0  	0 I   0.0   0.0   0:00.88 kworker/2:0-mm_percpu_wq                                                  	 
+
+
+Changing ownerships 
+
+ls -l first.c
+-rw-rw-r-- 1 divyah divyah 0 Mar 25 09:56 first.c
+
+sudo chmod u+x first.c
+ls -l first.c
+-rwxrw-r-- 1 divyah divyah 0 Mar 25 09:56 first.c
+
+ls -l first.c
+-rwxrw-r-- 1 divyah divyah 0 Mar 25 09:56 first.c
+ls
+first.c
+ls -l
+total 0
+-rwxrw-r-- 1 divyah divyah 0 Mar 25 09:56 first.c
+
+chown- change ownership 
+
+sudo chown admin1 first.c
+[sudo] password for divyah:
+ls -l
+total 0
+-rwxrw-r-- 1 admin1 divyah 0 Mar 25 09:56 first.c
+
+divyah@admin1-HP-280-G4-MT-Business-PC:~/Desktop$ ls -l
+total 4
+drwxrwxr-x 2 divyah divyah 4096 Mar 25 09:56 Exp
+divyah@admin1-HP-280-G4-MT-Business-PC:~/Desktop$ gedit xc.txt
+divyah@admin1-HP-280-G4-MT-Business-PC:~/Desktop$ sudo chown -R admin1 xc.txt
+
+R- recursive
+
+divyah@admin1-HP-280-G4-MT-Business-PC:~/Desktop$ ls -l xc.txt
+-rw-rw-r-- 1 admin1 divyah 0 Mar 25 10:17 xc.txt
+divyah@admin1-HP-280-G4-MT-Business-PC:~/Desktop$ mkdir dummy
+divyah@admin1-HP-280-G4-MT-Business-PC:~/Desktop$ sudo chown -R admin1 dummy
+divyah@admin1-HP-280-G4-MT-Business-PC:~/Desktop$ ls -l dummy
+total 0
+(Admin1 will get ownership of files present in dummy directory)
+
+
+
+Install MongoDB
+
+
+mongo
+MongoDB shell version v4.4.4
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Error: couldn't connect to server 127.0.0.1:27017, connection attempt failed: SocketException: Error connecting to 127.0.0.1:27017 :: caused by :: Connection refused :
+connect@src/mongo/shell/mongo.js:374:17
+@(connect):2:6
+exception: connect failed
+exiting with code 1
+divyah@admin1-HP-280-G4-MT-Business-PC:~$ sudo systemctl enable mongod
+Created symlink /etc/systemd/system/multi-user.target.wants/mongod.service → /lib/systemd/system/mongod.service.
+divyah@admin1-HP-280-G4-MT-Business-PC:~$ sudo systemctl restart mongod
+
+
+mongo
+MongoDB shell version v4.4.4
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("8302a83e-db56-4ced-8db4-5ae304fe2895") }
+MongoDB server version: 4.4.4
+Welcome to the MongoDB shell.
+For interactive help, type "help".
+For more comprehensive documentation, see
+    https://docs.mongodb.com/
+Questions? Try the MongoDB Developer Community Forums
+    https://community.mongodb.com
+---
+The server generated these startup warnings when booting:
+    	2021-03-25T10:31:09.613+05:30: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+    	2021-03-25T10:31:11.489+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+    	Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+    	metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+    	The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+    	and anyone you share the URL with. MongoDB may use this information to make product
+    	improvements and to suggest MongoDB products and deployment options to you.
+
+    	To enable free monitoring, run the following command: db.enableFreeMonitoring()
+    	To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+
+To exit 
+> exit 
+bye
+
+
+Hierarchy 
+Database -> collection(table) -> records? Documents (one entry of json array or obj / one row)
+
+db - object of mongodb class used to access functions in mongodb
+
+Check databases present
+> show dbs;
+admin	0.000GB
+company  0.000GB
+config   0.000GB
+local	0.000GB
+mydb 	0.000GB
+
+Create database
+>use mydb;
+switched to db mydb
+
+object.collection.function
+> db.student.insert({
+... name:"abc",
+... usn:"1NT18IS001"
+... });
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({
+... semester:6});
+WriteResult({ "nInserted" : 1 })
+nInserted - no. of documents inserted
+
+To display 
+db.collection.find();
+
+> db.student.find();
+{ "_id" : ObjectId("605c1d5add959ba3ab0a1be7"), "name" : "abc", "usn" : "1NT18IS001" }
+{ "_id" : ObjectId("605c1d93dd959ba3ab0a1be8"), "semester" : 6 }
+
+
+
+To make display look better
+> db.student.find().pretty();
+{
+    "_id" : ObjectId("605c1d5add959ba3ab0a1be7"),
+    "name" : "abc",
+    "usn" : "1NT18IS001"
+}
+{ "_id" : ObjectId("605c1d93dd959ba3ab0a1be8"),
+ "semester" : 6 
+}
+
+
+To install vscode
+
+Download vs code deb file in browser
+Open downloads and open terminal
+sudo apt install gdebi
+sudo gdebi code_1.54.3-1615806378_amd64.deb
+
+
