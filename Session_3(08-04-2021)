@@ -1,0 +1,255 @@
+USN: 1NT18IS054
+NAME: DIVYA HEGDE
+
+Date: 08-04-2021
+Session 3
+
+
+1. Find out the total number of books which is having price &lt;200$
+
+db.Books.find({"Price":{$lt:200}}).count();
+4
+
+
+2. Find out all the records which are published between the year 1990 – 2000
+
+db.Books.find({"Published_year":{$lt:2000,$gt:1990}}).pretty();
+{
+	"_id" : ObjectId("606e8679dfc4f99541ef46f7"),
+	"Name" : "Girl in the room 105",
+	"Series" : "No",
+	"Published_year" : 1996,
+	"Category" : [
+		"Suspense"
+	],
+	"Price" : 300,
+	"Authors" : [
+		"Chetan"
+	],
+	"Available_in" : [
+		"USA",
+		"India"
+	]
+}
+{
+	"_id" : ObjectId("606e8688dfc4f99541ef46f8"),
+	"Name" : "La familia",
+	"Series" : "Yes",
+	"Published_year" : 1997,
+	"Category" : [
+		"Family entertainer"
+	],
+	"Price" : 150,
+	"Authors" : [
+		"Richards",
+		"Marcus"
+	],
+	"Available_in" : [
+		"India"
+	]
+}
+{
+	"_id" : ObjectId("606e879cdfc4f99541ef46fe"),
+	"Name" : "That Romantic Night",
+	"Series" : "Yes",
+	"Published_year" : 1993,
+	"Category" : [
+		"Romance"
+	],
+	"Price" : 190,
+	"Authors" : [
+		"Williams",
+		"Noora"
+	],
+	"Available_in" : [
+		"USA",
+		"South Africa"
+	]
+}
+
+
+3. Find out all the books which can be sold in “India”
+
+ db.Books.find({"Available_in":{$in:["India"]}}).pretty();
+{
+	"_id" : ObjectId("606e8679dfc4f99541ef46f7"),
+	"Name" : "Girl in the room 105",
+	"Series" : "No",
+	"Published_year" : 1996,
+	"Category" : [
+		"Suspense"
+	],
+	"Price" : 300,
+	"Authors" : [
+		"Chetan"
+	],
+	"Available_in" : [
+		"USA",
+		"India"
+	]
+}
+{
+	"_id" : ObjectId("606e8688dfc4f99541ef46f8"),
+	"Name" : "La familia",
+	"Series" : "Yes",
+	"Published_year" : 1997,
+	"Category" : [
+		"Family entertainer"
+	],
+	"Price" : 150,
+	"Authors" : [
+		"Richards",
+		"Marcus"
+	],
+	"Available_in" : [
+		"India"
+	]
+}
+{
+	"_id" : ObjectId("606e8696dfc4f99541ef46f9"),
+	"Name" : "Hearty Paws",
+	"Series" : "No",
+	"Published_year" : 2014,
+	"Category" : [
+		"Romance"
+	],
+	"Price" : 180,
+	"Authors" : [
+		"Kylie",
+		"Kenneth"
+	],
+	"Available_in" : [
+		"USA",
+		"India"
+	]
+}
+{
+	"_id" : ObjectId("606e86a6dfc4f99541ef46fa"),
+	"Name" : "The Nun",
+	"Series" : "Yes",
+	"Published_year" : 2019,
+	"Category" : [
+		"Horror"
+	],
+	"Price" : 350,
+	"Authors" : [
+		"Leo",
+		"Ritvik"
+	],
+	"Available_in" : [
+		"India"
+	]
+}
+{
+	"_id" : ObjectId("606e8789dfc4f99541ef46fd"),
+	"Name" : "He was the one",
+	"Series" : "No",
+	"Published_year" : 2000,
+	"Category" : [
+		"Thriller"
+	],
+	"Price" : 220,
+	"Authors" : [
+		"Senne",
+		"Zoe"
+	],
+	"Available_in" : [
+		"India"
+	]
+}
+
+4. Find out all the books which are series, provide the count
+
+db.Books.find({"Series":{$eq:"Yes"}}).count();
+4
+
+
+5. Find out all the documents which are series and belong to the “thriller” category
+
+db.Books.find({$and:[{"Series":{$eq:"Yes"}},{"Category":{$eq:"Thriller"}}]}).pretty();
+{
+	"_id" : ObjectId("606e86cedfc4f99541ef46fc"),
+	"Name" : "Watch out who",
+	"Series" : "Yes",
+	"Published_year" : 2018,
+	"Category" : [
+		"Thriller"
+	],
+	"Price" : 60,
+	"Authors" : [
+		"John"
+	],
+	"Available_in" : [
+		"USA",
+		"Russia"
+	]
+}
+
+6. Find out all the records which is both thriller and having the price &lt; $100
+
+db.Books.find({$and:[{"Price":{$lt:100}},{"Category":{$eq:"Thriller"}}]}).pretty();
+{
+	"_id" : ObjectId("606e86cedfc4f99541ef46fc"),
+	"Name" : "Watch out who",
+	"Series" : "Yes",
+	"Published_year" : 2018,
+	"Category" : [
+		"Thriller"
+	],
+	"Price" : 60,
+	"Authors" : [
+		"John"
+	],
+	"Available_in" : [
+		"USA",
+		"Russia"
+	]
+}
+
+
+7. Delete a record that is published in the year between 1998-1999 and belongs to thriller
+category
+
+ db.Books.insertOne({
+...     Name:"You know who",
+...     Series:"No",
+...     Published_year:1999,
+...     Category:["Thriller"],
+...     Price:100,
+...     Authors:["Senne","Zoe"],
+...     Available_in:["USA"]
+... });
+{
+	"acknowledged" : true,
+	"insertedId" : ObjectId("606e8de4fae43b94d2ab7c64")
+}
+
+db.Books.deleteMany({$and:[{"Category":{$eq:"Thriller"}},{"Published_year":{$lte:1999,$gte:1998}}]});
+{ "acknowledged" : true, "deletedCount" : 1 }
+
+
+8. List out all the names and price of the books which are published between 1990-1999
+
+db.Books.find({"Published_year":{$lt:1999,$gte:1990}},{"Name":1,"Price":1}).pretty();
+{
+	"_id" : ObjectId("606e8679dfc4f99541ef46f7"),
+	"Name" : "Girl in the room 105",
+	"Price" : 300
+}
+{
+	"_id" : ObjectId("606e8688dfc4f99541ef46f8"),
+	"Name" : "La familia",
+	"Price" : 150
+}
+{
+	"_id" : ObjectId("606e879cdfc4f99541ef46fe"),
+	"Name" : "That Romantic Night",
+	"Price" : 190
+}
+{
+	"_id" : ObjectId("606e87fbdfc4f99541ef46ff"),
+	"Name" : "The Entertainer",
+	"Price" : 200
+}
+
+
