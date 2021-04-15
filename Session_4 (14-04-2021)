@@ -1,0 +1,118 @@
+USN: 1NT18IS054
+Name: Divya Hegde
+Date: 15-04-2021
+Session 4
+
+
+Group all the records by the department type and calculate the average sum of the salary from each department.
+
+db.staff.aggregate({$group:{_id:"$Department",AvgSalary:{$avg:"$Salary"}}});
+
+{ "_id" : [ "Administration" ], "AvgSalary" : 55000 }
+{ "_id" : [ "Human Resource" ], "AvgSalary" : 27500 }
+{ "_id" : [ "Development Team" ], "AvgSalary" : 45000 }
+{ "_id" : [ "Maintenance" ], "AvgSalary" : 20000 }
+
+
+Group all the records by the age, find out the average salary by the age group. 
+
+db.staff.aggregate({$group:{_id:"$Age",AvgSalary:{$avg:"$Salary"}}});
+
+{ "_id" : 26, "AvgSalary" : 20000 }
+{ "_id" : 35, "AvgSalary" : 37500 }
+{ "_id" : 25, "AvgSalary" : 40000 }
+{ "_id" : 45, "AvgSalary" : 50000 }
+{ "_id" : 29, "AvgSalary" : 45000 }
+
+
+Apply the map-reduce aggregation to project the name and amount owned by each staff by doing multiple jobs in different departments.
+
+var mapF=function(){ emit(this.Name,this.Salary);};
+var redF=function(name,sal){return Array.sum(sal);};
+db.staff.mapReduce(mapF,redF,{out:"SalSum"});
+{ "result" : "SalSum", "ok" : 1 }
+db.SalSum.find();
+
+{ "_id" : "Bharat", "value" : 60000 }
+{ "_id" : "Akshay", "value" : 20000 }
+{ "_id" : "Bhargav", "value" : 40000 }
+{ "_id" : "Anil", "value" : 50000 }
+{ "_id" : "Ankush", "value" : 25000 }
+{ "_id" : "Aniket", "value" : 50000 }
+{ "_id" : "Anita", "value" : 30000 }
+
+Match all the records having the performance status as “Excellent”, group them by their staff id and compute the salary for each of them. 
+
+
+db.staff.aggregate({$match:{"Performance_status":{$in:["Excellent"]}}},{$group:{ _id:"$_id",Sal:{$sum:"$Salary"}}});
+
+{ "_id" : 13, "Sal" : 60000 }
+{ "_id" : 11, "Sal" : 30000 }
+
+
+
+Demonstrate the usage of $match, $group, aggregate pipelines. Demonstrate the usage of $min, $last, $first, $sum, $max query operators with the $group operator. 
+
+db.staff.insertOne({
+...     "_id":15,
+...     Name:"Akshata",
+...     Department:["Maintenance"],
+...     Salary:10000,
+...     Age:26,
+...     Designation:"Clerk",
+...     Increment:"Yes",
+...     Performance_status:["Good"]
+... });
+{ "acknowledged" : true, "insertedId" : 15 }
+
+
+db.staff.aggregate({$match:{"Performance_status":{$in:["Good"]}}},{$group:{_id:"$Age",Sal:{$sum:"$Salary"}}});
+{ "_id" : 26, "Sal" : 30000 }
+{ "_id" : 45, "Sal" : 50000 }
+{ "_id" : 35, "Sal" : 50000 }
+
+
+db.staff.aggregate({$match:{"Performance_status":{$in:["Good"]}}},{$group:{_id:"$Age",Sal:{$min:"$Salary"}}});
+
+{ "_id" : 26, "Sal" : 10000 }
+{ "_id" : 45, "Sal" : 50000 }
+{ "_id" : 35, "Sal" : 50000 }
+ db.staff.aggregate({$match:{"Performance_status":{$in:["Good"]}}},{$group:{_id:"$Age",Sal:{$max:"$Salary"}}});
+
+{ "_id" : 26, "Sal" : 20000 }
+{ "_id" : 45, "Sal" : 50000 }
+{ "_id" : 35, "Sal" : 50000 }
+ db.staff.aggregate({$match:{"Performance_status":{$in:["Good"]}}},{$group:{_id:"$Age",Sal:{$first:"$Salary"}}});
+
+{ "_id" : 26, "Sal" : 20000 }
+{ "_id" : 45, "Sal" : 50000 }
+{ "_id" : 35, "Sal" : 50000 }
+ 
+
+db.staff.aggregate({$match:{"Performance_status":{$in:["Good"]}}},{$group:{_id:"$Age",Sal:{$last:"$Salary"}}});
+
+{ "_id" : 26, "Sal" : 10000 }
+{ "_id" : 45, "Sal" : 50000 }
+{ "_id" : 35, "Sal" : 50000 }
+
+
+
+Apply the map reduce paradigm to project name and sum of salary on to a collection called “mapreduceout”. 
+
+var mapfunc=function(){ emit(this.Name,this.Salary);};
+var redfunc=function(name,sal){return Array.sum(sal);};
+db.staff.mapReduce(mapfunc,redfunc,{out:"mapreduceout"});
+{ "result" : "mapreduceout", "ok" : 1 }
+db.mapreduceout.find();
+
+{ "_id" : "Bharat", "value" : 60000 }
+{ "_id" : "Akshay", "value" : 20000 }
+{ "_id" : "Bhargav", "value" : 40000 }
+{ "_id" : "Akshata", "value" : 10000 }
+{ "_id" : "Anil", "value" : 50000 }
+{ "_id" : "Ankush", "value" : 25000 }
+{ "_id" : "Aniket", "value" : 50000 }
+{ "_id" : "Anita", "value" : 30000 }
+ 
+
+
